@@ -1,1 +1,28 @@
 <!-- <country-list /> -->
+<div class="p-6 bg-gray-900 text-white rounded-lg shadow-lg">
+  <h1 class="text-3xl font-bold text-center mb-2">🌍 Por Región</h1>
+  <h3 class="text-lg text-gray-300 text-center mb-4">Seleccione una región</h3>
+
+  <section class="flex flex-wrap justify-center gap-3 mb-6">
+    @for (region of regions; track region) {
+      <button
+        class="px-4 py-2 text-sm font-medium rounded-lg transition-all
+               bg-gray-800 text-gray-200 hover:bg-indigo-500 hover:text-white
+               active:bg-indigo-700 active:scale-95
+               focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        (click)="selectedRegion.set(region)"
+        [class.bg-indigo-500]="selectedRegion() === region"
+        [class.text-white]="selectedRegion() === region"
+      >
+        {{ region }}
+      </button>
+    }
+  </section>
+
+  <country-list
+    [countries]="countryResource.value() ?? []"
+    [errorMessage]="countryResource.error()"
+    [isLoading]="countryResource.isLoading()"
+    [isEmpty]="countryResource.value()?.length === 0"
+  />
+</div>
