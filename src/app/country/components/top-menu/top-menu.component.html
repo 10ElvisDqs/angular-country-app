@@ -1,44 +1,54 @@
-<nav class="p-4 w-full bg-gray-900 bg-opacity-50 backdrop-blur-lg shadow-2xl rounded-2xl border border-gray-700">
-  <ul class="flex justify-center space-x-6">
+<nav class="p-4 w-full">
+  <ul class="menu bg-base-200 sm:menu-horizontal rounded-box">
     <li>
-      <a
-        routerLink="by-capital"
-        routerLinkActive="bg-blue-500 text-white"
-        class="flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-300 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:shadow-blue-500/50 transform hover:scale-105"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <a routerLink="by-capital" routerLinkActive="btn-primary" class="btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path
+            fill="none"
+            stroke="currentColor"
+            d="M.5 15.5v-2.25S6 10.5 9.75 9.5V4.211c0-.79.23-1.565.707-2.194c.364-.48.828-1.052 1.293-1.517h.5c.465.465.93 1.037 1.293 1.517c.478.629.707 1.404.707 2.194V9.5c3.75 1 9.25 3.75 9.25 3.75v2.25s-5.5-1-9.25-1c0 0-.5 2.28-.5 6.5c0 0 1.25.75 2.25 1.75v.5S13.75 23 12 23s-4 .25-4 .25v-.5c1-1 2.25-1.75 2.25-1.75c0-4.22-.5-6.5-.5-6.5c-3.75 0-9.25 1-9.25 1Z"
+            stroke-width="1"
+          />
+        </svg>
+        Por Capital
+      </a>
+    </li>
+    <li>
+      <a routerLink="by-country" routerLinkActive="btn-primary" class="btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M.5 15.5v-2.25S6 10.5 9.75 9.5V4.211c0-.79.23-1.565.707-2.194c.364-.48.828-1.052 1.293-1.517h.5c.465.465.93 1.037 1.293 1.517c.478.629.707 1.404.707 2.194V9.5c3.75 1 9.25 3.75 9.25 3.75v2.25s-5.5-1-9.25-1c0 0-.5 2.28-.5 6.5c0 0 1.25.75 2.25 1.75v.5S13.75 23 12 23s-4 .25-4 .25v-.5c1-1 2.25-1.75 2.25-1.75c0-4.22-.5-6.5-.5-6.5c-3.75 0-9.25 1-9.25 1Z"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
-        <span class="text-lg font-semibold">Por Capital</span>
+        Por País
       </a>
     </li>
     <li>
-      <a
-        routerLink="by-country"
-        routerLinkActive="bg-blue-500 text-white"
-        class="flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-300 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:shadow-blue-500/50 transform hover:scale-105"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      <a routerLink="by-region" routerLinkActive="btn-primary" class="btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 10s1-2 4-2 5 3 8 3 5-3 8-3 4 2 4 2m-3 4s-1 2-4 2-5-3-8-3-5 3-8 3-4-2-4-2"
+          />
         </svg>
-        <span class="text-lg font-semibold">Por País</span>
-      </a>
-    </li>
-    <li>
-      <a
-        routerLink="by-region"
-        routerLinkActive="bg-blue-500 text-white"
-        class="flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-300 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:shadow-blue-500/50 transform hover:scale-105"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10s1-2 4-2 5 3 8 3 5-3 8-3 4 2 4 2m-3 4s-1 2-4 2-5-3-8-3-5 3-8 3-4-2-4-2"/>
-        </svg>
-        <span class="text-lg font-semibold">Por Región</span>
+        Por Región
       </a>
     </li>
   </ul>

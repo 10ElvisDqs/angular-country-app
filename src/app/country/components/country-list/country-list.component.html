@@ -1,79 +1,63 @@
-<section class="mt-8 px-6">
-  <div class="overflow-x-auto bg-gray-900/60 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-gray-700">
-    <!-- Título de la Sección -->
-    <h2 class="text-3xl font-semibold text-center text-white mb-6">🌍 Lista de Países</h2>
-
-    <table class="table-auto w-full text-gray-200">
-      <thead class="bg-gradient-to-r from-indigo-700 to-blue-800 text-white rounded-t-lg shadow-lg">
-        <tr class="text-lg">
-          <th class="py-4 px-6 text-left">#</th>
-          <th class="py-4 px-6 text-left">Icon</th>
-          <th class="py-4 px-6 text-left">Bandera</th>
-          <th class="py-4 px-6 text-left">Nombre</th>
-          <th class="py-4 px-6 text-left">Capital</th>
-          <th class="py-4 px-6 text-left">Población</th>
-          <th class="py-4 px-6"></th>
+<section class="mt-5">
+  <table class="table table-md mt-2 w-full">
+    <thead>
+      <th>#</th>
+      <th>Icon</th>
+      <th>Bandera</th>
+      <th>Nombre</th>
+      <th>Capital</th>
+      <th>Poblacion</th>
+      <th></th>
+    </thead>
+    <tbody>
+      @for (country of countries(); track country.cca2; let index = $index) {
+        <tr>
+          <td>{{ index + 1}}</td>
+          <td>{{ country.flag }}</td>
+          <td>
+            <img [src]="country.flagSvg" [alt]="country.name" class="w-10" />
+          </td>
+          <td>{{ country.name}}</td>
+          <td>{{ country.capital}}</td>
+          <td>
+            <span class="badge badge-secondary">
+              {{ country.population | number }}
+            </span>
+          </td>
+          <td>
+            <a
+              [routerLink]="['/country/by', country.cca2]"
+              class="link-primary cursor-pointer">Mas Informacion</a>
+          </td>
         </tr>
-      </thead>
-
-      <tbody class="divide-y divide-gray-600">
-        @for (country of countries(); track country.cca2; let index = $index) {
-          <tr class="group transition-all duration-300 hover:bg-gray-800 hover:shadow-xl hover:border-indigo-500 border border-transparent">
-            <td class="py-4 px-6 font-semibold text-blue-400 group-hover:text-indigo-300 transition-all">
-              {{ index + 1 }}
-            </td>
-            <td class="text-2xl">{{ country.flag }}</td>
-            <td>
-              <img [src]="country.flagSvg" [alt]="country.name"
-                   class="w-14 h-10 rounded-lg shadow-md transition-transform duration-300 hover:scale-110 hover:ring-2 hover:ring-indigo-500" />
-            </td>
-            <td class="font-medium text-white group-hover:text-indigo-300">{{ country.name }}</td>
-            <td class="text-gray-400 group-hover:text-gray-300">{{ country.capital }}</td>
-            <td>
-              <span class="px-3 py-1 text-sm bg-indigo-600 text-white rounded-full shadow-lg transition-all duration-300 group-hover:bg-indigo-400 group-hover:shadow-indigo-500/50">
-                {{ country.population | number }}
-              </span>
-            </td>
-            <td>
-              <a [routerLink]="['/country/by', country.cca2]"
-                 class="text-blue-400 hover:text-blue-300 hover:underline font-medium transition-all duration-300">
-                Más Información →
-              </a>
-            </td>
-          </tr>
-        }
-
-        <!-- Mensajes de Error, Información y Carga -->
-        @if (errorMessage()) {
-          <tr>
-            <td colspan="7" class="text-center py-6">
-              <div class="bg-red-800 text-red-400 p-4 rounded-lg shadow-lg border border-red-600">
-                <strong>Error!</strong> {{ errorMessage() }}
-              </div>
-            </td>
-          </tr>
-        }
-
-        @if (countries().length === 0 && !isLoading()) {
-          <tr>
-            <td colspan="7" class="text-center py-6">
-              <div class="bg-blue-900 text-blue-300 p-4 rounded-lg shadow-lg border border-blue-600">
-                <strong>Info!</strong> No se encontraron resultados.
-              </div>
-            </td>
-          </tr>
-        }
-
-        @if (isLoading()) {
-          <tr>
-            <td colspan="7" class="text-center py-6">
-              <div class="bg-purple-900 text-purple-300 p-4 rounded-lg shadow-lg border border-purple-600">
-                <strong>Info!</strong> Buscando países...
-              </div>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
-  </div>
+      }
+      @if (errorMessage()) {
+        <tr>
+          <td colspan="8" class="text-center">
+            <div class="alert alert-error">
+              <strong>Error!</strong> {{ errorMessage() }}
+            </div>
+          </td>
+        </tr>
+      }
+      @if (countries().length === 0 && !isLoading()) {
+        <tr>
+          <td colspan="8" class="text-center">
+            <div class="alert alert-info">
+              <strong>Info!</strong> No se encontraron resultados
+            </div>
+          </td>
+        </tr>
+      }
+      @if (isLoading()) {
+        <tr>
+          <td colspan="8" class="text-center">
+            <div class="alert alert-info">
+              <strong>Info!</strong> Buscando paises...
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
 </section>
